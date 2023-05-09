@@ -6,6 +6,7 @@ import React,{useEffect, useState} from 'react';
 import { FaGithub, FaTooth, FaUserAlt, FaUsers,FaFileMedical, FaProductHunt,FaBoxes,FaServicestack,FaMoneyBillAlt } from 'react-icons/fa';
 import {VscFileSubmodule} from 'react-icons/vsc';
 import {ImProfile} from 'react-icons/im';
+import request from 'superagent';
 //import { IoFileTrayFullSharp } from 'react-icons/io';
 import {
   MdAccountCircle,
@@ -45,7 +46,12 @@ import { GrResources } from 'react-icons/gr';
 import SubMenu from './SubMenu/SubMenu';
 
 import { connect } from 'react-redux';
+import Cookies from 'js-cookie';
+import swal from 'sweetalert';
+import { OBTENER_DATOS_USUARIO_TOKEN } from '../../api/apiTypes';
 
+ //actions
+ import { setDatosUsuario, setTokenUsuario, setListaPermisos } from '../../store/actions';
 const sidebarBackground = {
   backgroundImage: `url("${sidebarBgImage}")`,
   backgroundSize: 'cover',
@@ -126,16 +132,41 @@ const bem = bn.create('sidebar');
 const  Sidebar =props => {
  
 
-  const[ isOpenComponents, setIsOpenComponents] = useState(true);
-  const[ isOpenContents, setIsOpenContents ] = useState(true);
-  const[ isOpenPages, setIsOpenPages] = useState(true);
+  // const[ isOpenComponents, setIsOpenComponents] = useState(true);
+  // const[ isOpenContents, setIsOpenContents ] = useState(true);
+  // const[ isOpenPages, setIsOpenPages] = useState(true);
 
   const [listaRecursos, setListaRecursos] =useState([]);
+
+  useEffect(()=>{
+    _inicializar();
+  },[])
 
   useEffect(()=>{
     props.state.permisos!=null?(setListaRecursos(props.state.permisos)):(setListaRecursos([]))
   },[props.state.permisos])
 
+  const _inicializar=async()=>{
+    try{
+      const token = Cookies.get('token');
+      let datos_usuario = await request.post(process.env.REACT_APP_ENDPOINT_BASE_URL + OBTENER_DATOS_USUARIO_TOKEN)
+                                            .set('Accept', 'application/json')
+                                            .set("Authorization", "Bearer " + token);
+      datos_usuario = datos_usuario.body;
+      datos_usuario.correo_electronico_usuario= "werwe"; // borrar Al modificar servicio.
+  
+
+      props.setListaPermisos(datos_usuario.permisos)
+    }catch(e){
+      console.log("Error: ",e)
+      // swal({
+      //   title:"Error al obtener permisos de usuario",
+      //   icon:"error",
+      //   text:"Ha ocurrido un error al obtener los permisos del usuario, pongase en contacto con el equipo de desarrollo",
+      //   button:"Aceptar"
+      // });
+    }
+  }
 
 
   
@@ -149,7 +180,7 @@ const  Sidebar =props => {
             <SourceLink className="navbar-brand d-flex">
 
               <span className="text-white">
-                Odonto-Serrano <FaTooth />
+                Gestion de Maestrias <FaTooth />
               </span>
             </SourceLink>
           </Navbar>
@@ -346,5 +377,9 @@ const mapStateToProps=reducers=>{
     state: reducers.permisosReducer
   }
 }
-
-export default connect(mapStateToProps, undefined) (Sidebar);
+const mapDispatchToProps = dispatch => {
+  return{
+    setListaPermisos: (permisos) => dispatch(setListaPermisos(permisos)),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps) (Sidebar);

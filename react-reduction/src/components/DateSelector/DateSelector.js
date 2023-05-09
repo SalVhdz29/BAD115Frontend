@@ -73,7 +73,7 @@ const DateSelector = props =>{
         <Fragment>
              <DatePicker
                 //{...this.props}
-                dateFormat={"Pp"}
+                // dateFormat={"Pp"}
                 locale="es"
                 className={error?("form-control red-border"):("form-control ")}
                 selected={deshabilitar!=true?(fechaSeleccionada.toJSDate()):(null)}
