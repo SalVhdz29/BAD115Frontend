@@ -27,7 +27,7 @@ const SignatureContainer = ({correlativo, codigo_asignatura, nombre_asignatura, 
 
     return(
         <Fragment>
-            <div className="signatureMainContainer">
+            <div className="signatureMainContainer" style={{fontSize:"10px"}}>
                 <Row>
                     <Col>
 
