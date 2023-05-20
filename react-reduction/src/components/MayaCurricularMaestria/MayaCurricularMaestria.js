@@ -7,16 +7,18 @@ import{
 
 } from 'reactstrap';
 import {MdSchool} from 'react-icons/md';
-import DataTable from '../DataTable/DataTable';
-import DateSelector from '../DateSelector/DateSelector';
-import SignatureContainer from './SignatureContainer/SignatureContainer';
+import { useHistory, useLocation } from 'react-router-dom';
 import Select from 'react-select';
+import swal from 'sweetalert';
+//Component
+import SignatureContainer from './SignatureContainer/SignatureContainer';
 import CicloContainer from './CicloContainer/CicloContainer';
 
 //json
 import { lista_ciclos_json } from './Json/data_prueba';
-import swal from 'sweetalert';
 
+
+//Model
 const datosMaestriaModel = {
     nombre_maestria:" Matemática Analítica",
     duracion_ciclos:10,
@@ -28,14 +30,65 @@ const MayaCurricularMaestria = props =>{
     const [datosMaestria, setDatosMaestria] = useState(datosMaestriaModel);
     const [listaCiclosFiltro, setListaCiclosFiltro] = useState([]);
     const [listaCiclos, setListaCiclos] = useState([]);
+    const [ciclosFilter, setCiclosFilter] = useState(null);
+    const [listaFiltradaCiclos, setListaFiltradaCiclos] = useState([]);
+    const [enableEdit, setEnableEdit] = useState(false);
+
 
     useEffect(()=>{
         _inicializar();
     },[]);
 
+    useEffect(()=>{
+        _filtrarCiclos()
+    },[listaCiclos, ciclosFilter]);
+
     const _inicializar = async() =>{
         try{
             setListaCiclos(lista_ciclos_json);
+            setListaCiclosFiltro([
+                {
+                    value:1,
+                    label:"Ciclo I"
+                },
+                {
+                    value:2,
+                    label:"Ciclo II"
+                },
+                {
+                    value:3,
+                    label:"Ciclo III"
+                },
+                {
+                    value:4,
+                    label:"Ciclo IV"
+                },
+                {
+                    value:5,
+                    label:"Ciclo V"
+                },
+                {
+                    value:6,
+                    label:"Ciclo VI"
+                },
+                {
+                    value:7,
+                    label:"Ciclo VII"
+                },
+                {
+                    value:8,
+                    label:"Ciclo VIII"
+                },
+                {
+                    value:9,
+                    label:"Ciclo IX"
+                },
+                {
+                    value:10,
+                    label:"Ciclo X"
+                }
+            ])
+            setEnableEdit(false);
 
         }catch(e){
             console.log("Error: ",e)
@@ -46,6 +99,28 @@ const MayaCurricularMaestria = props =>{
                 button:"Aceptar"
             });
         }
+    }
+    
+    const _filtrarCiclos=()=>{
+        let n_ciclos_filtrados=[];
+        let  id_ciclos_filtros = null;
+        if(ciclosFilter != null && ciclosFilter.length > 0){
+            id_ciclos_filtros =[];
+            for(let ciclo of ciclosFilter) {
+                id_ciclos_filtros.push(ciclo.value);
+            }
+        }
+
+        for(let ciclo of listaCiclos){
+            const {id_ciclo} = ciclo;
+
+            if(id_ciclos_filtros == null || id_ciclos_filtros.includes(id_ciclo)){
+                const n_ciclo = {...ciclo};
+                n_ciclos_filtrados.push(n_ciclo);
+            }
+        }
+
+        setListaFiltradaCiclos(n_ciclos_filtrados);
     }
     return(
         <Fragment>
@@ -103,9 +178,13 @@ const MayaCurricularMaestria = props =>{
                                         <Select
                                             id="ciclosSelect"
                                             name="ciclosSelect"
-                                            value={null}
+                                            value={ciclosFilter}
                                             options={listaCiclosFiltro}
-                                            placeholder="seleccione uno o más de uno"
+                                            placeholder="Seleccione uno o más de uno"
+                                            onChange={(options)=>{
+                                                setCiclosFilter(options)
+                                            }}
+                                            isMulti
                                         />
                                     </Col>
                                 </FormGroup>
@@ -124,9 +203,11 @@ const MayaCurricularMaestria = props =>{
                                 }}
                             >
                                 <div style={{width:"100%",maxHeight:"49VH",  paddingTop:"1%", overflowY:"scroll"}}>
-                                    {listaCiclos.map(ciclo =>(
+                                    {listaFiltradaCiclos.map(ciclo =>(
                                         <CicloContainer
                                         datosCiclo={ciclo}
+                                        enableEdit={enableEdit}
+                                        recargarPadre={()=>{_inicializar()}}
                                         />
                                     ))}
                                 </div>

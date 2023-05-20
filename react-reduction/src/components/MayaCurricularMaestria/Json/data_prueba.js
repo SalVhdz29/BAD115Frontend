@@ -9,7 +9,10 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"MAT115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
+
             },
             {
                 id_asignatura:2,
@@ -17,7 +20,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"FIR115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:3,
@@ -25,7 +30,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"LENG115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:4,
@@ -33,7 +40,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"QUI115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:5,
@@ -41,14 +50,16 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"PSI115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             }
         ]
     },
 
     {
-        id_ciclo:1,
-        numero_ciclo:"I",
+        id_ciclo:2,
+        numero_ciclo:"II",
         lista_asignaturas:[
             {
                 id_asignatura:1,
@@ -56,7 +67,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"MAT115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:2,
@@ -64,7 +77,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"FIR115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:3,
@@ -72,7 +87,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"LENG115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:4,
@@ -80,7 +97,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"QUI115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:5,
@@ -88,14 +107,16 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"PSI115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             }
         ]
     },
 
     {
-        id_ciclo:1,
-        numero_ciclo:"I",
+        id_ciclo:3,
+        numero_ciclo:"III",
         lista_asignaturas:[
             {
                 id_asignatura:1,
@@ -103,7 +124,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"MAT115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:2,
@@ -111,7 +134,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"FIR115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:3,
@@ -119,7 +144,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"LENG115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:4,
@@ -127,7 +154,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"QUI115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             },
             {
                 id_asignatura:5,
@@ -135,7 +164,9 @@ export const lista_ciclos_json=[
                 correlativo:1,
                 codigo_asignatura:"PSI115",
                 unidades_valorativos:4,
-                prerequisitos:"N/A"
+                prerequisitos:"N/A",
+                duracion_semanas:16,
+                metodologias:"expositiva, practica, etc"
             }
         ]
     }

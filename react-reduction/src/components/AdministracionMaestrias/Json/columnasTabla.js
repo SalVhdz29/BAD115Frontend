@@ -11,10 +11,11 @@ export const columnas_tabla=[
         dataField:"numero_fila",
         style:{
             textAlign:'center', // para celdas.
+            fontSize:"13px"
         },
         headerStyle:()=>{
             return{
-                width:"5%"
+                width:"2%"
             }
         },
         
@@ -30,6 +31,7 @@ export const columnas_tabla=[
         dataField:"codigo_maestria",
         style:{
             textAlign:'center', // para celdas.
+             fontSize:"13px"
         },
         headerStyle:()=>{
             return{
@@ -50,6 +52,7 @@ export const columnas_tabla=[
         dataField:"nombre_maestria",
         style:{
             textAlign:'center', // para celdas.
+             fontSize:"13px"
         },
         headerStyle:()=>{
             return{
@@ -67,9 +70,10 @@ export const columnas_tabla=[
             &nbsp;
             <label style={{fontSize:10}}>Descripción</label>
         </Fragment>,
-        dataField:"descripcion_maestria",
+        dataField:"descripcion",
         style:{
-            textAlign:'center', // para celdas.
+            textAlign:'justify', // para celdas.
+             fontSize:"13px"
         },
         headerStyle:()=>{
             return{
@@ -87,13 +91,14 @@ export const columnas_tabla=[
             &nbsp;
             <label style={{fontSize:10}}>Modalidad</label>
         </Fragment>,
-        dataField:"modalidad_maestria",
+        dataField:"modalidad",
         style:{
             textAlign:'center', // para celdas.
+             fontSize:"13px"
         },
         headerStyle:()=>{
             return{
-                width:"8%"
+                width:"5%"
             }
         },
         
@@ -107,9 +112,10 @@ export const columnas_tabla=[
             &nbsp;
             <label style={{fontSize:10}}>Estado</label>
         </Fragment>,
-        dataField:"estado_maestria",
+        dataField:"estado",
         style:{
             textAlign:'center', // para celdas.
+            fontSize:"13px"
         },
         headerStyle:()=>{
             return{
@@ -128,9 +134,9 @@ export const columnas_tabla=[
             &nbsp;
             <label style={{fontSize:10}}>Operaciones</label>
         </Fragment>,
-        dataField:"estado_maestria",
+        dataField:"operaciones",
         style:{
-            textAlign:'center', // para celdas.
+            textAlign:'justify', // para celdas.
         },
         headerStyle:()=>{
             return{
