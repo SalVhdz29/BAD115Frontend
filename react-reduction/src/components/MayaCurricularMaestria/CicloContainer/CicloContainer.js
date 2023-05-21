@@ -12,8 +12,6 @@ import {FiEye,
 import {
     Menu,
     Item,
-    Separator,
-    Submenu,
     useContextMenu,
 } from "react-contexify/dist/index.js";
 import swal from 'sweetalert';
@@ -119,20 +117,21 @@ const  CicloContainer = props => {
                                         correlativo={asignatura.correlativo}
                                         codigo_asignatura={asignatura.codigo_asignatura}
                                         nombre_asignatura={asignatura.nombre_asignatura}
-                                        unidades_valorativas={asignatura.unidades_valorativas}
-                                        prerequisitos={asignatura.prerequisitos} 
+                                        unidades_valorativas={asignatura.unidades_valorativos}
+                                        prerequisitos={asignatura.prerequisitos}
+                                        enableEdit={props.enableEdit}
                                     />    
                                 </div>
                             ))}
-                            <div style={{width:"1%", marginTop:"1%"}}>
+                            <div style={{width:"1%", marginTop:"1%"}} onClick={_displayConfigMenu} >
                                 <ButtonToggle 
                                     color="info" 
                                     size="xs"
-                                    onContextMenu={_displayConfigMenu} 
+                                    
                                     outline>
                                     <SlWrench />
                                 </ButtonToggle>
-                                <Menu id={MENU_ID}>
+                                <Menu id={MENU_ID} style={{fontSize:"12px"}}>
                                     {/*Cambiar id_ciclo por el correlativo de asignatura_maestria_ciclo */}
                                     <Item 
                                         onClick={(event)=>{_handleMenuOption(1, datosCiclo)}} 
@@ -146,16 +145,16 @@ const  CicloContainer = props => {
                                                 onClick={(event)=>{_handleMenuOption(2, datosCiclo)}} 
                                                 key={2}><div style={{color:"orange"}}><FiEdit3 /></div> &nbsp;Editar
                                             </Item>
+                                            <Item onClick={(event)=>{_handleMenuOption(3, datosCiclo)}} key={3}><div style={{color:"red"}}><FiTrash2 /></div> &nbsp;Eliminar</Item>
                                         </div>
                                     ):(
                                         <span></span>
                                     )}
-                                    {/*Cambiar id_ciclo por el correlativo de asignatura_maestria_ciclo */}
-                                    <Item onClick={(event)=>{_handleMenuOption(3, datosCiclo)}} key={3}><div style={{color:"red"}}><FiTrash2 /></div> &nbsp;Eliminar</Item>
+                                    
                                 </Menu>
                             </div>
                         </div>
-                        <ModalVerCiclo modalOpen={modales.modalVer} datosCiclo={datosCiclo} />
+                        <ModalVerCiclo modalOpen={modales.modalVer} datosCiclo={datosCiclo} recargarPadre={()=>{setModales({modalVer: false, modalEditar: false})}} />
 
                     </CardBody>
                 </Card>

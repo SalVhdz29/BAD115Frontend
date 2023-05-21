@@ -15,7 +15,7 @@ import DataTable from '../../DataTable/DataTable';
 //json
 import { columnas_tabla } from './Json/data_muestra';
 
-const ModalVerCiclo = ({modalOpen, datosCiclo}) => {
+const ModalVerCiclo = ({modalOpen, datosCiclo, recargarPadre}) => {
     const [modal, setModal] = useState(false);
     const [filasAsignatura, setFilasAsignatura] = useState([]);
 
@@ -33,6 +33,10 @@ const ModalVerCiclo = ({modalOpen, datosCiclo}) => {
 
     const _toggleModal=()=>{
         setModal(!modal);
+
+        if(!modal == false && recargarPadre != null){
+            recargarPadre();
+        }
     }
 
     const _obtenerData = () =>{
