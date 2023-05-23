@@ -32,6 +32,7 @@ import AdministracionCohortes from '../components/AdministracionCohortes/Adminis
 import MayaCurricularMaestria from '../components/MayaCurricularMaestria/MayaCurricularMaestria';
 import PlanEstudiosMaestria from '../components/PlanEstudiosMaestria/PlanEstudiosMaestria';
 import ProgramaEstudioAsignatura from '../components/ProgramaEstudioAsignatura/ProgramaEstudioAsignatura';
+import AprobacionPlanesEstudio from '../components/AprobacionPlanesEstudio/AprobacionPlanesEstudio';
 // import NuevoRecurso from '../components/GestionRecursos/NuevoRecurso/NuevoRecurso';
 // import BusquedaPacientes from '../components/BusquedaPacientes/BusquedaPacientes';
 // import CitasPorAtender from '../components/CitasPorAtender/CitasPorAtender';
@@ -71,14 +72,16 @@ const userRoutes =[
     {path:"/gestion_usuarios", component:GestionUsuarios},
     {path:"/gestion_modulos", component: TipoRecurso},  
     {path:"/gestion_roles", component:GestionRoles },
-    {path:"/administracion_maestrias", component:AdministracionMaestrias },
     {path:"/gestion_recursos", component: infoRecursos},
+    //DIRECTOR MAESTRIA
+    {path:"/administracion_maestrias", component:AdministracionMaestrias },
+    {path:"/maya_curricular", component: MayaCurricularMaestria},
+    {path:"/maestria_plan_estudios", component: PlanEstudiosMaestria},
+    {path:"/aprobacion_plan_estudio", component: AprobacionPlanesEstudio},
     //COORDINADOR ACADEMICO
     {path:"/administracion_asignaturas", component: AdministracionAsignaturas},
     {path:"/administracion_cohortes", component: AdministracionCohortes},
-    {path:"/maya_curricular", component: MayaCurricularMaestria},
-    {path:"/maestria_plan_estudios", component: PlanEstudiosMaestria},
-    {oath:"/programa_asignatura", component: ProgramaEstudioAsignatura},
+    {path:"/programa_asignatura", component: ProgramaEstudioAsignatura},
 
     
     

@@ -8,6 +8,7 @@ import Select from 'react-select';
 //Component
 import DataTable from "../DataTable/DataTable";
 import ModalObservacionesMaestria from "./ModalObservacionesMaestria/ModalObservacionesMaestria";
+import ModalPerfilAspirante from "./ModalPerfilAspirante/ModalPerfilAspirante";
 
 //json
 import { columnas_tabla } from "./Json/columnasTabla";
@@ -28,6 +29,13 @@ const AdministracionMaestrias = props =>{
   const [listaMaestrias, setListaMaestrias] = useState([]);
   const [filasTabla, setFilasTabla] = useState([]);
   const [maestriaObservaciones, setMaestriaObservaciones] = useState(maestriaObservacionesModel);
+  const [maestriaPerfilAspirante, setMaestriaPerfilAspirante] = useState({
+    modalOpen:false,
+    datosMaestria:{
+      nombre_maestria:"",
+      codigo:""
+    }
+  });
   const [modalidadflt, setModalidadflt] = useState(null);
   const [opcionesModalidad, setOpcionesModalidad] = useState([
     {
@@ -142,7 +150,13 @@ const AdministracionMaestrias = props =>{
             color="warning" 
             size="sm" 
             outline 
-            title="Perfil Aspirante" 
+            title="Perfil Aspirante"
+            onClick={()=>{
+              setMaestriaPerfilAspirante({
+                modalOpen:true,
+                datosMaestria: maestria
+              })
+            }}
             style={{marginLeft:"5px"}} >
             <MdPerson />
           </ButtonToggle>
@@ -150,7 +164,8 @@ const AdministracionMaestrias = props =>{
             color="info" 
             size="sm" 
             outline 
-            title="Cohortes" 
+            title="Cohortes"
+           
             style={{marginLeft:"5px"}} >
             <MdPeople />
           </ButtonToggle>
@@ -209,6 +224,20 @@ const AdministracionMaestrias = props =>{
             listaObservaciones={maestriaObservaciones.listaObservaciones}
             nombreMaestria={maestriaObservaciones.nombreMaestria}
             recargarPadre={()=>{setMaestriaObservaciones({nombreMaestria:"", listaObservaciones:[], modalOpen:false});}}
+           />
+
+           <ModalPerfilAspirante
+           modalOpen={maestriaPerfilAspirante.modalOpen}
+           datosMaestria={maestriaPerfilAspirante.datosMaestria}
+           recargarPadre={()=>{
+            setMaestriaPerfilAspirante({
+              modalOpen:false,
+              datosMaestria:{
+                nombre_maestria:"",
+                codigo:""
+              }
+            });
+           }}
            />
         </Container>
       </div>
