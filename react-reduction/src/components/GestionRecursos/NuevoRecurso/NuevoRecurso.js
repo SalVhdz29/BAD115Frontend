@@ -470,7 +470,7 @@ const NuevoRecurso = props =>{
                         {props.isReadOnly?(undefined):(
                         <div className="mt-3">
                             <Button
-                              className="btn btn-primary btn-md w-md"
+                              className="btn btn-success btn-md w-md"
                               type="submit"
                             >
                              Guardar

@@ -55,7 +55,7 @@ const AdministracionCohortes = props =>{
                 </Row>
                 <Row>
                     <Col md={1}>
-                        <Button color="success"className="btn btn-block">Filtrar</Button>
+                        <Button color="success" className="btn btn-block">Filtrar</Button>
                     </Col>
                 </Row>
             </div>

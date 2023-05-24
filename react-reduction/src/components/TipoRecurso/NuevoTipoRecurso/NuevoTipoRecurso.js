@@ -276,7 +276,7 @@ const NuevoTipoRecurso = props =>{
             {/* <FormGroup className="float-right"> */}
      
                 <Button 
-                    className="btn btn-primary btn-sm"
+                    className="btn btn-success btn-sm"
                    
                     onClick={()=>{setModalOpen(true)}}
 
@@ -337,7 +337,7 @@ const NuevoTipoRecurso = props =>{
                                 <Row>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label><b>nombre de Tipo Recurso</b></Label>
+                                            <Label><b>Nombre de Tipo Recurso</b></Label>
                                             <AvField
                                                 //id="nombreUsuarioIpx"
                                                 id="nombreTipoRecursoIpx"
@@ -459,7 +459,7 @@ const NuevoTipoRecurso = props =>{
                         {props.isReadOnly?(undefined):(
                         <div className="mt-3">
                             <Button
-                              className="btn btn-primary btn-md w-md"
+                              className="btn btn-success btn-md w-md"
                               type="submit"
                             >
                              Guardar

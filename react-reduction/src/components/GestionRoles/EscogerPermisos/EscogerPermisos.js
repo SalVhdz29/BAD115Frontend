@@ -144,7 +144,7 @@ const EscogerPermisos = props =>{
                 <Button 
                     id="gestionPermisosbtn"
                     name="gestionPermisosbtn"
-                    className="btn btn-primary btn-md btn-block"
+                    className="btn btn-warning btn-md btn-block"
                     onClick={()=>{setModalPermisoOpen(true)}}
                 >
                     Elegir Permisos
@@ -232,8 +232,8 @@ const EscogerPermisos = props =>{
                         <Col >
                         <div className="mt-3">
                             <Button
-                              className="btn btn-primary btn-md w-md"
-                              color = "primary"
+                              className="btn btn-success btn-md w-md"
+                              color = "success"
                               onClick={_permisosSubmit}
                             >
                              Asignar
