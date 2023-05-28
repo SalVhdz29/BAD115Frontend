@@ -121,6 +121,10 @@ const ConfiguracionCuentaEmpleado = props =>{
         }
     }
 
+    const _formarFilasExpedienteAcademico=()=>{
+        
+    }
+
     const _actualizarDatosPersonales=(values)=>{
         console.log("VALORES: ", values)
     }
