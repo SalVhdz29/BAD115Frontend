@@ -8,10 +8,24 @@ import { Container,
  } from "reactstrap";
 import Select from 'react-select';
 import swal from "sweetalert";
-import {MdSchool} from 'react-icons/md';
+import {
+    MdSchool,
+    MdWarningAmber,
+    MdViewHeadline
+} from 'react-icons/md';
+import {
+    Menu,
+    Item,
+    useContextMenu,
+} from "react-contexify/dist/index.js";
+import {FiEye, 
+    FiCheck,
+    FiEdit3} from 'react-icons/fi';
 
 //Component
 import DataTable from "../DataTable/DataTable";
+import ModalVerPlanEstudio from '../PlanEstudiosMaestria/ModalVerPlanEstudio/ModalVerPlanEstudio';
+import ModalRechazoObservaciones from "./ModalRechazoObservaciones/ModalRechazoObservaciones";
 //json
 import { columnas_tabla, datos_prueba_json } from "./Json/data_prueba";
 //models
@@ -27,19 +41,29 @@ const filtroEstadoModel={
     listado_estado:[],
     estado_filtro:null,
 }
+const planEstudioVerModel={
+    id_plan_estudio:null,
+    modal_open:false
+}
 
 const AprobacionPlanesEstudio = props =>{
     const [planesEstudio, setPlanesEstudio] = useState(planesEstudioModel);
     const [filasPlanesEstudio, setFilasPlanesEstudio] = useState([]);
     const [filtroMaestria, setFiltroMaestria] = useState(filtroMaestriaModel);
     const [filtroEstado, setFiltroEstado] = useState(filtroEstadoModel);
-
+    const [planEstudioVer, setPlanEstudioVer] = useState(planEstudioVerModel);
+    const [planEstudioObservaciones, setPlanEstudioObservaciones] = useState(planEstudioVerModel);
+    const [planEstudioDesicion, setPlanEstudioDesicion] = useState(null);
+    //menu
+    const MENU_ID = "menu-id-aprobacion-planes-estudio-options";
+    const {show} = useContextMenu({
+        id: MENU_ID,
+    });
     useEffect(()=>{
         _inicializar();
     },[]);
 
     useEffect(()=>{
-        console.log("planesEstudio: ", planesEstudio);
         if(planesEstudio.lista_planes_estudio != null){
             _formarFilas();
         }
@@ -48,10 +72,7 @@ const AprobacionPlanesEstudio = props =>{
     const _inicializar=()=>{
         try{
             //llamada
-            console.log("entro al inicializar", datos_prueba_json)
             const {planes_estudio, lista_estados, lista_maestrias} = datos_prueba_json;
-            // const n_plan_estudio ={...planesEstudio};
-            // n_plan_estudio.lista_planes_estudio = planes_estudio;
             setPlanesEstudio({...planesEstudio, lista_planes_estudio: planes_estudio});
             setFiltroEstado({...filtroEstado, listado_estado: lista_estados});
             setFiltroMaestria({...filtroMaestria, listado_maestrias: lista_maestrias});
@@ -86,9 +107,36 @@ const AprobacionPlanesEstudio = props =>{
         }
         let i = 1;
         for(let iterador of planesEstudio.lista_planes_estudio){
-            if((n_maestria_filtro.length == 0 || n_maestria_filtro.includes(iterador.maestria.codigo_maestria)) == true 
-            && (n_estado_filtro.length == 0 || n_estado_filtro.includes(iterador.estado.id_estado)) == true){
+            if((n_maestria_filtro.length === 0 || n_maestria_filtro.includes(iterador.maestria.codigo_maestria)) === true 
+            && (n_estado_filtro.length === 0 || n_estado_filtro.includes(iterador.estado.id_estado)) === true){
                 
+                const operaciones = <Fragment>
+                    <ButtonToggle
+                    color="success"
+                    size="sm"
+                    outline
+                    onClick={()=>{
+                        setPlanEstudioVer({
+                            modal_open:true,
+                            id_plan_estudio: iterador.id_plan_estudio
+                        })
+                    }}
+                    style={{margin:"5px"}}>
+                        <FiEye />
+                    </ButtonToggle>
+                    <ButtonToggle
+                    color="info"
+                    size="sm"
+                    outline
+                    onClick={
+                        (e)=>{
+                            _displayOptionMenu(e, iterador.id_plan_estudio)
+                        }
+                    }>
+                        <MdViewHeadline />
+                    </ButtonToggle>
+                </Fragment>;
+
                 n_filas.push({
                     numero_fila:i,
                     autor: iterador.autor.nombre_autor,
@@ -96,7 +144,7 @@ const AprobacionPlanesEstudio = props =>{
                     estado: iterador.estado.estado,
                     titulo_otorgado: iterador.titulo_otorgado,
                     fecha_creacion: iterador.fecha_creacion,
-                    operaciones:""
+                    operaciones
                 });
                 i++;
             }
@@ -105,6 +153,32 @@ const AprobacionPlanesEstudio = props =>{
         setFilasPlanesEstudio( n_filas);
 
     }
+
+    const _displayOptionMenu=(event, id_plan_estudio)=>{
+        event.preventDefault();
+        setPlanEstudioDesicion(id_plan_estudio);
+        show({
+            event,
+            props: {
+                key: 'value',
+            }
+        });
+    }
+
+    const _handleMenuOption=(type)=>{
+
+        if(type == 1){
+            // Aprobar
+        }else if(type == 2){
+            //Rechazar con Observaciones
+            setPlanEstudioObservaciones({modal_open: true, id_plan_estudio: planEstudioDesicion });
+
+
+        }else if(type == 3){
+            //Rechazar
+        }
+    }
+
 
     return(
         <Fragment>
@@ -166,6 +240,40 @@ const AprobacionPlanesEstudio = props =>{
 
                         </CardBody>
                     </Card>
+                    <Menu id={MENU_ID} style={{fontSize:"12px"}}>
+                        <Fragment>
+                            <Item
+                                onClick={()=>{_handleMenuOption(1)}}>
+                                <div style={{color:'green'}}><FiCheck />&nbsp;Aprobar</div>
+                            </Item>
+                            <Item
+                                onClick={()=>{_handleMenuOption(2)}}>
+                                <div style={{color:'orange'}}>
+                                    <MdWarningAmber />&nbsp;Rechazar con observaciones
+                                </div>
+                            </Item>
+                            <Item
+                                onClick={()=>{_handleMenuOption(3)}}>
+                                <div style={{color:'red'}}><FiEdit3 />&nbsp;Rechazar</div>
+                            </Item>     
+                        </Fragment>
+                    </Menu>
+                    <ModalVerPlanEstudio
+                        idPlanEstudio={planEstudioVer.id_plan_estudio}
+                        modalOpen={planEstudioVer.modal_open}
+                        recargarPadre={()=>{
+                            setPlanEstudioVer(planEstudioVerModel);
+                        }} 
+                    />
+                    <ModalRechazoObservaciones
+                        idPlanEstudio={planEstudioObservaciones.id_plan_estudio}
+                        modalOpen={planEstudioObservaciones.modal_open}
+                        recargarPadre={()=>{
+                            setPlanEstudioDesicion(null);
+                            setPlanEstudioObservaciones(planEstudioVerModel);
+                            _inicializar()
+                        }} 
+                    />
                 </Container>
             </div>
         </Fragment>

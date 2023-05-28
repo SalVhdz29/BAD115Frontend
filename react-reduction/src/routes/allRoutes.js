@@ -33,6 +33,7 @@ import MayaCurricularMaestria from '../components/MayaCurricularMaestria/MayaCur
 import PlanEstudiosMaestria from '../components/PlanEstudiosMaestria/PlanEstudiosMaestria';
 import ProgramaEstudioAsignatura from '../components/ProgramaEstudioAsignatura/ProgramaEstudioAsignatura';
 import AprobacionPlanesEstudio from '../components/AprobacionPlanesEstudio/AprobacionPlanesEstudio';
+import ConfiguracionCuentaEmpleado from '../components/ConfiguracionCuentaEmpleado.js/ConfiguracionCuentaEmpleado';
 // import NuevoRecurso from '../components/GestionRecursos/NuevoRecurso/NuevoRecurso';
 // import BusquedaPacientes from '../components/BusquedaPacientes/BusquedaPacientes';
 // import CitasPorAtender from '../components/CitasPorAtender/CitasPorAtender';
@@ -79,6 +80,7 @@ const userRoutes =[
     {path:"/maestria_plan_estudios", component: PlanEstudiosMaestria},
     {path:"/aprobacion_plan_estudio", component: AprobacionPlanesEstudio},
     //COORDINADOR ACADEMICO
+    {path:"/configuracion_cuenta_empleado", component: ConfiguracionCuentaEmpleado},
     {path:"/administracion_asignaturas", component: AdministracionAsignaturas},
     {path:"/administracion_cohortes", component: AdministracionCohortes},
     {path:"/programa_asignatura", component: ProgramaEstudioAsignatura},
