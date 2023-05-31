@@ -80,10 +80,11 @@ const userRoutes =[
     {path:"/maestria_plan_estudios", component: PlanEstudiosMaestria},
     {path:"/aprobacion_plan_estudio", component: AprobacionPlanesEstudio},
     //COORDINADOR ACADEMICO
-    {path:"/configuracion_cuenta_empleado", component: ConfiguracionCuentaEmpleado},
+    {path:"/configuracion_cuenta_empleado", component: ConfiguracionCuentaEmpleado}, ////////////REFERENCIA 
     {path:"/administracion_asignaturas", component: AdministracionAsignaturas},
     {path:"/administracion_cohortes", component: AdministracionCohortes},
     {path:"/programa_asignatura", component: ProgramaEstudioAsignatura},
+    
 
     
     
