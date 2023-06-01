@@ -48,6 +48,9 @@ export const columnas_tabla_laboral=[
         text:"Operaciones"
     }
 ]
+//tablas_involuccradas 
+
+
 
 export const datos_usuario={
     datos_personales:{
@@ -202,5 +205,13 @@ export const datos_usuario={
             fecha_fin: DateTime.now()        
         },
     ],
+    documentacion_profesor:{
+        id_documentacion_profesor: 1,
+        tipo_profesor: "",
+        documento_profesor: "",
+        tipo_documentacion_profesor: "cv",
+        fecha_creacion_documento: DateTime.now(),
+        
+    },
     bandera_edicion: true
 }
