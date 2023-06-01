@@ -34,6 +34,8 @@ import PlanEstudiosMaestria from '../components/PlanEstudiosMaestria/PlanEstudio
 import ProgramaEstudioAsignatura from '../components/ProgramaEstudioAsignatura/ProgramaEstudioAsignatura';
 import AprobacionPlanesEstudio from '../components/AprobacionPlanesEstudio/AprobacionPlanesEstudio';
 import ConfiguracionCuentaEmpleado from '../components/ConfiguracionCuentaEmpleado.js/ConfiguracionCuentaEmpleado';
+import CohorteAspiranteProfesor from '../components/CohorteAspiranteProfesor/CohorteAspiranteProfesor';
+
 // import NuevoRecurso from '../components/GestionRecursos/NuevoRecurso/NuevoRecurso';
 // import BusquedaPacientes from '../components/BusquedaPacientes/BusquedaPacientes';
 // import CitasPorAtender from '../components/CitasPorAtender/CitasPorAtender';
@@ -84,7 +86,7 @@ const userRoutes =[
     {path:"/administracion_asignaturas", component: AdministracionAsignaturas},
     {path:"/administracion_cohortes", component: AdministracionCohortes},
     {path:"/programa_asignatura", component: ProgramaEstudioAsignatura},
-    
+    {path:"/cohorte_aspirante_profesor", component: CohorteAspiranteProfesor}, /////////falta limpieza
 
     
     

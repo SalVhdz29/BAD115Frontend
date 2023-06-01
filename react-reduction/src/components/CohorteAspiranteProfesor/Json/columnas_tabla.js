@@ -54,14 +54,14 @@ export const columnas_tabla_laboral=[
 
 export const datos_usuario={
     datos_personales:{
-        primer_nombre:"Salvador",
-        segundo_nombre:"Enrique",
-        tercer_nombre:"",
-        primer_apellido:"Hernández",
+        primer_nombre:"Daniel",
+        segundo_nombre:"Ernesto",
+        tercer_nombre:"Salvador",
+        primer_apellido:"Guillen",
         segundo_apellido:"Chavez",
-        direccion:"avenida buenavida casa 40 block N",
+        direccion:"avenida buenacola casa 40 block N",
         fecha_nacimiento: DateTime.now(),
-        correo_electronico:"salvador@hotmail.com",
+        correo_electronico:"salvadorGuillen@hotmail.com",
         correo_eletronico_institucional: "HC14038@ues.edu.sv",
         pais:{
             id_pais:1,
