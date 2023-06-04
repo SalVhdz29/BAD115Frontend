@@ -34,6 +34,7 @@ import PlanEstudiosMaestria from '../components/PlanEstudiosMaestria/PlanEstudio
 import ProgramaEstudioAsignatura from '../components/ProgramaEstudioAsignatura/ProgramaEstudioAsignatura';
 import AprobacionPlanesEstudio from '../components/AprobacionPlanesEstudio/AprobacionPlanesEstudio';
 import ConfiguracionCuentaEmpleado from '../components/ConfiguracionCuentaEmpleado.js/ConfiguracionCuentaEmpleado';
+import SistemaEvaluacion from '../components/SistemaEvaluacion/SistemaEvaluacion';
 // import NuevoRecurso from '../components/GestionRecursos/NuevoRecurso/NuevoRecurso';
 // import BusquedaPacientes from '../components/BusquedaPacientes/BusquedaPacientes';
 // import CitasPorAtender from '../components/CitasPorAtender/CitasPorAtender';
@@ -50,7 +51,7 @@ import ConfiguracionCuentaEmpleado from '../components/ConfiguracionCuentaEmplea
 const userRoutes =[
     //{path:"/", component: TipoRecurso},
     
-    {path:"/", component: BasePage},
+    {path:"/", component: AdministracionMaestrias},
     //{path:"/", component: DashboardPage},
     // {path:"/AlertPage", component: AlertPage},
     // {path: "/AuthModalPage", component: AuthModalPage},
@@ -84,6 +85,7 @@ const userRoutes =[
     {path:"/administracion_asignaturas", component: AdministracionAsignaturas},
     {path:"/administracion_cohortes", component: AdministracionCohortes},
     {path:"/programa_asignatura", component: ProgramaEstudioAsignatura},
+    {path:"/sistema_evaluacion", component: SistemaEvaluacion},
 
     
     

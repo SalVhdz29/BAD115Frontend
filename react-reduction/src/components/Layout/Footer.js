@@ -9,7 +9,7 @@ const Footer = () => {
     <Navbar>
       <Nav navbar>
         <NavItem>
-          Sistema Administrativo DSI-2021_G01<SourceLink></SourceLink>
+          Sistema Administrativo BAD-2023_G13<SourceLink></SourceLink>
         </NavItem>
       </Nav>
     </Navbar>

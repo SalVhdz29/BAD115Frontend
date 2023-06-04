@@ -19,10 +19,11 @@ import 'react-contexify/dist/ReactContexify.css';
 //Component
 import SignatureContainer from '../SignatureContainer/SignatureContainer';
 import ModalVerCiclo from '../ModalVerCiclo/ModalVerCiclo';
-
+import ModalEditarCiclo from '../ModalEditarCiclo/ModalEditarCiclo';
 
 //model
 const datosCicloModel ={
+    id_ciclo:1,
     numero_ciclo:"I",
     lista_asignaturas:[
     ]
@@ -32,7 +33,7 @@ const  CicloContainer = props => {
     const [datosCiclo, setDatosCiclo] = useState(datosCicloModel);
     const [modales, setModales] = useState({modalVer:false, modalEditar:false});
     //menu
-    const MENU_ID = "menu-id";
+    const MENU_ID = "menu-id" +datosCiclo.id_ciclo;
     const {show} = useContextMenu({
         id: MENU_ID,
     });
@@ -57,6 +58,7 @@ const  CicloContainer = props => {
         // event.preventDefault();
         if(type == 1){
             //Ver
+            // setDatosCiclo(ciclo);
             setModales({modalVer:true, modalEditar:false});
         }else if( type == 2){
             //Editar
@@ -155,6 +157,7 @@ const  CicloContainer = props => {
                             </div>
                         </div>
                         <ModalVerCiclo modalOpen={modales.modalVer} datosCiclo={datosCiclo} recargarPadre={()=>{setModales({modalVer: false, modalEditar: false})}} />
+                        <ModalEditarCiclo modalOpen={modales.modalEditar} datosCiclo={datosCiclo} recargarPadre={()=>{setModales({modalVer: false, modalEditar: false})}}  />
 
                     </CardBody>
                 </Card>

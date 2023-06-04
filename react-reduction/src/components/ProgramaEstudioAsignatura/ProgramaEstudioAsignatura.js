@@ -46,30 +46,25 @@ const ProgramaEstudioAsignatura = props =>{
                                                                 name="correlativoIpx" 
                                                             />
                                                         </FormGroup>
-                                                        <FormGroup>
-                                                            <Label>Duracion:</Label>
-                                                            <AvField
-                                                                id="duracionIpx"
-                                                                name="duracionIpx" 
-                                                            />
-                                                        </FormGroup>
-                                                        <FormGroup>
-                                                            <Label>Numero horas/ciclo:</Label>
-                                                            <AvField
-                                                                id="numeroHorasIpx"
-                                                                name="numeroHorasIpx" 
-                                                            />
-                                                        </FormGroup>
+                                                        
+                                                        
                                                     </div>
                                                 </Col>
                                                 <Col>
                                                     <FormGroup>
-                                                        <Label>Prerequisitos: </Label>
-                                                        <Select
-                                                            id="prerequisitosSelect"
-                                                            name="prerequisitosSelect"
-                                                            value={null}
-                                                            options={[]} 
+                                                        <Label>Numero horas/ciclo:</Label>
+                                                        <AvField
+                                                            id="numeroHorasIpx"
+                                                            name="numeroHorasIpx" 
+                                                        />
+                                                    </FormGroup>
+                                                </Col>
+                                                <Col>
+                                                    <FormGroup>
+                                                        <Label>Duracion:</Label>
+                                                        <AvField
+                                                            id="duracionIpx"
+                                                            name="duracionIpx" 
                                                         />
                                                     </FormGroup>
                                                 </Col>
@@ -128,7 +123,7 @@ const ProgramaEstudioAsignatura = props =>{
                                                                         />
                                                                     </Col>
                                                                     <Col>
-                                                                        <Button className="btn btn-success">
+                                                                        <Button className="btn" color="success" outline>
                                                                             Agregar
                                                                         </Button>
                                                                     </Col>
@@ -176,7 +171,7 @@ const ProgramaEstudioAsignatura = props =>{
                                                                         />
                                                                     </Col>
                                                                     <Col>
-                                                                        <Button className="btn btn-success">
+                                                                        <Button className="btn" color="success" outline>
                                                                             Agregar
                                                                         </Button>
                                                                     </Col>
@@ -193,7 +188,7 @@ const ProgramaEstudioAsignatura = props =>{
                                                 <Row>
                                                     <Col>
                                                         <div style={{display:"flex", flexDirection:"row-reverse"}}>
-                                                            <Button className="btn btn-success">
+                                                            <Button className="btn" color="success" outline>
                                                                 Siguiente: Sistema de Evaluación
                                                             </Button>
 

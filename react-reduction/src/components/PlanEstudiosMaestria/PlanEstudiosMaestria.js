@@ -16,6 +16,7 @@ import {FiEye,
     FiEdit3} from 'react-icons/fi';
 import Select from 'react-select';
 import swal from 'sweetalert';
+import { useHistory, useLocation } from 'react-router-dom';
 //Component
 import DataTable from '../DataTable/DataTable';
 import ModalVerPlanEstudio from './ModalVerPlanEstudio/ModalVerPlanEstudio';
@@ -34,6 +35,10 @@ const PlanEstudiosMaestria = props =>{
     const [modalesPlanEstudio, setModalesPlanEstudio] =useState({modalVer:false, modalEditar:false, modalCrear:false})
     const [planEstudioModal, setPlanEstudioModal] = useState(null);
     const [enableEdit, setEnableEdit] = useState(false);
+    const [creacionMaestriaflg, setCreacionMaestriaFlg] = useState(false);
+
+    const location = useLocation();
+    const history = useHistory();
 
     useEffect(()=>{
         _inicializar();
@@ -42,9 +47,9 @@ const PlanEstudiosMaestria = props =>{
     const _inicializar=()=>{
         try{
             //llamada a un servicio.
+            const codigo_maestria = location.state.codigo_maestria;
             const {
                 nombre_maestria,
-                codigo_maestria,
                 descripcion,
                 planes_estudio
             } = datos_maestria;
@@ -82,8 +87,13 @@ const PlanEstudiosMaestria = props =>{
             }
 
             setEnableEdit(bandera_servicio_edit);
-
-            setListaPlanEstudio(n_planes_estudio)
+            setListaPlanEstudio(n_planes_estudio);
+            console.log("location state: ",location.state);
+            let bandera_creacion_maestria = location.state.bandera_creacion_maestria;
+            if(bandera_creacion_maestria == null){
+                bandera_creacion_maestria=false;
+            }
+            setCreacionMaestriaFlg(bandera_creacion_maestria);
 
         }catch(e){
             console.log("Error: ", e);
@@ -94,6 +104,46 @@ const PlanEstudiosMaestria = props =>{
                 button:"Aceptar"
             })
         }
+    }
+
+    const _continueCreacionMaestria=()=>{
+       if(generalidades.nombre_maestria != generalidadesModel.nombre_maestria){
+        if(listaPlanEstudio.length > 0){
+            swal({
+                title:"Siguiente Paso: Malla Curricular",
+                icon:"warning",
+                text:"¿Desea seguir a la creación de la malla curricular?",
+                buttons:["Cancelar","Aceptar"]
+              }).then(async respuesta =>{
+                if(respuesta){
+                  
+                  history.push({
+                    pathname: "/maya_curricular",
+                    state:{
+                      codigo_maestria: generalidades.codigo_maestria,
+                      bandera_creacion_maestria:true,
+                    }
+                  });
+                }
+            });
+    
+           }else{
+            swal({
+                title:"Requerido",
+                icon:"error",
+                text:"Es necesario crear al menos solo 1 plan de estudio antes de continuar",
+                button:"Aceptar"
+            });
+           }
+       }else{
+        swal({
+            title:"Requerido",
+            icon:"error",
+            text:"Es necesario establecer la información general de la maestria",
+            button:"Aceptar"
+        });
+       }
+       
     }
 
 
@@ -198,6 +248,17 @@ const PlanEstudiosMaestria = props =>{
                                 </Card>
                             </Col>
                         </Row>
+                        <br />
+                       {creacionMaestriaflg === true?(
+                         <div style={{display:"flex", flexDirection:"row-reverse"}}>
+                            <Button className="btn" color="success" outline onClick={()=>_continueCreacionMaestria()}>
+                                Siguiente paso: Malla Curricular
+                            </Button>
+                        </div>
+                       ):(
+                        <div></div>
+                       )}
+                        <br/>
 
 
                         {/* END del MAIN CONTENT */}
