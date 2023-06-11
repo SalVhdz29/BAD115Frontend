@@ -49,7 +49,7 @@ const DateSelector = props =>{
     },[props.limiteSuperiorFecha])
 
     const _validarFecha=async()=>{
-        let valido = false;
+        let valido = false; 
        
         limiteSuperiorFecha != null?(()=>{
         if(limiteSuperiorFecha.startOf("day") < fechaSeleccionada.startOf("day"))
