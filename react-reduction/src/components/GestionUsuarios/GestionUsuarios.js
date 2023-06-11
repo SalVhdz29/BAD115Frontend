@@ -197,14 +197,16 @@ const GestionUsuarios = props =>{
        
             props.state.listaUsuarios.map(usuario=>{
 
-                let {id_usuario,
-                    nombre_usuario, 
-                    id_f_empleado, 
+                let { 
+                    ID_USUARIO: id_usuario,
+                    NOMBRE_USUARIO: nombre_usuario, 
+                    ID_EMPLEADO: id_f_empleado, 
                     nombre_empleado, 
-                    correo_electronico, 
-                    fecha_creacion, 
-                    usuario_activo,
-                    roles } = usuario;
+                    CORREO_ELECTRONICO_USUARIO: correo_electronico, 
+                    FECHA_CREACION_USUARIO: fecha_creacion, 
+                    ACTIVO_USUARIO: usuario_activo,
+                    rol: roles,
+                } = usuario;
 
                     if(usuario_activo == 1)
                     {
@@ -224,17 +226,17 @@ const GestionUsuarios = props =>{
                 fila.fecha_creacion = fecha_creacion;
 
                 // fila.
-                fila.roles=(
-                    <ul>
-                        {roles.map(rol => {
-                            return(
-                        <li>{rol.nombre_usuario}</li>
-                        )
-                        })
-                        }
+                // fila.roles=(
+                //     <ul>
+                //         {roles.map(rol => {
+                //             return(
+                //         <li>{rol.nombre_usuario}</li>
+                //         )
+                //         })
+                //         }
 
-                    </ul>
-                )
+                //     </ul>
+                // )
 
                 fila.usuario_activo = (
                     <div>
