@@ -86,31 +86,32 @@ const GestionUsuarios = props =>{
     //Función que simula la inicialización de servicios.
     const _obtenerServicios=async(listUsuarios, listaEmpleados,listaRoles)=>{
         /* simulando la llamada a un servicio */
-        //console.log("valor del JSON en el llamado: ", listaUsuarios);
+        // //console.log("valor del JSON en el llamado: ", listaUsuarios);
         let token= Cookies.get('token');
 
         
-        let respuesta_empleados = await superagent.post(process.env.REACT_APP_ENDPOINT_BASE_URL + API_LISTA_EMPLEADOS_ACTIVOS)
-                                                 .set('Accept', 'application/json')
-                                                 .set("Authorization", "Bearer " + token);
+        // let respuesta_empleados = await superagent.post(process.env.REACT_APP_ENDPOINT_BASE_URL + API_LISTA_EMPLEADOS_ACTIVOS)
+        //                                          .set('Accept', 'application/json')
+        //                                          .set("Authorization", "Bearer " + token);
     
-        console.log("la respuesta: ", respuesta_empleados.body);
+        // console.log("la respuesta: ", respuesta_empleados.body);
 
-        await props.setListaEmpleados(respuesta_empleados.body);
+        // await props.setListaEmpleados(respuesta_empleados.body);
 
         
-        let respuesta_roles = await superagent.post(process.env.REACT_APP_ENDPOINT_BASE_URL + API_LISTA_USUARIO_ROLES)
-                                                 .set('Accept', 'application/json')
-                                                 .set("Authorization", "Bearer " + token);
+        // let respuesta_roles = await superagent.post(process.env.REACT_APP_ENDPOINT_BASE_URL + API_LISTA_USUARIO_ROLES)
+        //                                          .set('Accept', 'application/json')
+        //                                          .set("Authorization", "Bearer " + token);
     
-        console.log("la respuesta: ", respuesta_roles.body);
+        // console.log("la respuesta: ", respuesta_roles.body);
 
 
-        await props.setListaRoles(respuesta_roles.body);
+        // await props.setListaRoles(respuesta_roles.body);
 
-        let respuesta_usuarios = await superagent.post(process.env.REACT_APP_ENDPOINT_BASE_URL + API_LISTA_USUARIO_REGISTRADOS)
-                                                 .set('Accept', 'application/json')
-                                                 .set("Authorization", "Bearer " + token);
+        let respuesta_usuarios = await superagent.get(process.env.REACT_APP_ENDPOINT_BASE_URL + API_LISTA_USUARIO_REGISTRADOS)
+          // .set('Accept', 'application/json')
+          // .set("Authorization", "Bearer " + token)
+        ;
         //let {lista_usuarios} = respuesta_usuarios.body;
         console.log("la respuesta: ", respuesta_usuarios.body);
  
