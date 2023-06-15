@@ -3,7 +3,7 @@ import { UserCard } from 'components/Card';
 import Notifications from 'components/Notifications';
 import SearchInput from 'components/SearchInput';
 import { notificationsData } from 'demos/header';
-import logoSerrano from 'assets/img/logo/logoSerrano.png';
+import logoSerrano from 'assets/img/logo/SGM3.png';
 import withBadge from 'hocs/withBadge';
 import { withRouter, Link } from "react-router-dom";
 import React from 'react';
@@ -98,7 +98,7 @@ class Header extends React.Component {
         <Nav navbar className="mr-2">
         <img
                 src={logoSerrano}
-                width="400"
+                width="450"
                 height="150"
                 className="pr-2"
                 alt=""

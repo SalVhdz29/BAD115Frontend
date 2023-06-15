@@ -27,6 +27,7 @@ const ModalVerCiclo = ({modalOpen, datosCiclo, recargarPadre}) => {
 
     useEffect(()=>{
         if(datosCiclo != null){
+            console.log("LOS CAMBIOS DE DATOS CICLO: ", datosCiclo);
             _obtenerData()
         }
     },[datosCiclo]);
@@ -42,6 +43,7 @@ const ModalVerCiclo = ({modalOpen, datosCiclo, recargarPadre}) => {
     const _obtenerData = () =>{
         try{
             const {lista_asignaturas} = datosCiclo;
+            console.log("lista_asignaturas: ", lista_asignaturas)
             //llamada
             let numero_fila=1;
             let n_lista =[];
@@ -66,7 +68,7 @@ const ModalVerCiclo = ({modalOpen, datosCiclo, recargarPadre}) => {
     return(
         <Fragment>
             <Modal
-                size="lg"
+                size="xl"
                 isOpen={modal}
                 toggle={()=>{
                     _toggleModal();
