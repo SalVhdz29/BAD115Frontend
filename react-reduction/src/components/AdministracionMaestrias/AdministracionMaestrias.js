@@ -15,6 +15,9 @@ import { columnas_tabla } from "./Json/columnasTabla";
 import { lista_maestrias_json } from "./Json/datosPrueba";
 import swal from "sweetalert";
 
+import superagent from 'superagent';
+import { API_LISTA_MAESTRIA } from "../../api/GestionUsuarios/apiTypes";
+
 //model
 const maestriaObservacionesModel={
   nombreMaestria: "",
@@ -61,10 +64,25 @@ const AdministracionMaestrias = props =>{
     _formarFilas();
   },[listaMaestrias, modalidadflt]);
 
-  const _inicializar=()=>{
+  const _inicializar = async () => {
     try{
       //llamado al servicio.
-      setListaMaestrias(lista_maestrias_json);
+      let lista_maestrias_json = await superagent.get(process.env.REACT_APP_ENDPOINT_BASE_URL + API_LISTA_MAESTRIA);
+
+      let maestrias = lista_maestrias_json.body.map(maestria => ({
+        nombre_maestria: maestria.NOMBRE_MAESTRIA,
+        codigo_maestria: maestria.CODIGO_MAESTRIA,
+        bandera_editable: true,
+        id_modalidad: null,
+        estadoMaestria: maestria.ID_ESTADO_MAESTRIA,
+        observaciones: maestria.observaciones,
+      }));
+
+
+
+
+
+      setListaMaestrias(maestrias);
     }catch(e){
       swal({
         title:"Error al inicializar pantalla",
@@ -94,7 +112,7 @@ const AdministracionMaestrias = props =>{
         <Fragment>
           <center><b>{estadoMaestria}</b></center>
           <br />
-          {bandera_editable == true && observaciones.length > 0?(
+          {bandera_editable == true && observaciones.length > 0 ? (
             <ButtonToggle 
               color="info" 
               size="sm" 
