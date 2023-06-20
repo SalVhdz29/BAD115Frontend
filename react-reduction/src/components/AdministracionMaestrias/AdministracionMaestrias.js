@@ -186,6 +186,28 @@ const AdministracionMaestrias = props =>{
 
   }
 
+  const _nuevaMaestria=()=>{
+    swal({
+      title:"Nueva Maestria",
+      icon:"warning",
+      text:"¿Desea empezar el proceso de creación de una nueva maestria?",
+      buttons:["Cancelar","Aceptar"]
+    }).then(async respuesta =>{
+      if(respuesta){
+        //llamada a creación de maestria
+        let codigo_maestria=1; //simulando la obtención de un id por medio de la creación.
+        history.push({
+          pathname: "/maestria_plan_estudios",
+          state:{
+            codigo_maestria,
+            bandera_creacion_maestria:true,
+          }
+        });
+
+      }
+    })
+  }
+
   return(
     <Fragment>
       <div className="page-content">
@@ -210,6 +232,12 @@ const AdministracionMaestrias = props =>{
               </FormGroup>
             </div>
           </div>
+          <div style={{display:"flex", flexDirection:"row-reverse"}}>
+            <Button className="btn" color="success" outline onClick={()=>_nuevaMaestria()}>
+              Agregar Nueva Maestria
+            </Button>
+          </div>
+          <br />
           <Row>
             <Col>
               <DataTable

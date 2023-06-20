@@ -3,7 +3,8 @@ import{
     Row,Col,
     Container,
     Card, CardBody,
-    Label, FormGroup
+    Label, FormGroup,
+    Button
 
 } from 'reactstrap';
 import {MdSchool} from 'react-icons/md';
@@ -22,7 +23,8 @@ import { lista_ciclos_json } from './Json/data_prueba';
 const datosMaestriaModel = {
     nombre_maestria:" Matemática Analítica",
     duracion_ciclos:10,
-    coordinador_academico:"Salvador Hernandez"
+    coordinador_academico:"Salvador Hernandez",
+    codigo_maestria: 0,
 }
 
 const MayaCurricularMaestria = props =>{
@@ -33,6 +35,10 @@ const MayaCurricularMaestria = props =>{
     const [ciclosFilter, setCiclosFilter] = useState(null);
     const [listaFiltradaCiclos, setListaFiltradaCiclos] = useState([]);
     const [enableEdit, setEnableEdit] = useState(false);
+    const [creacionMaestriaflg, setCreacionMaestriaFlg] = useState(false);
+
+    const history = useHistory();
+    const location = useLocation();
 
 
     useEffect(()=>{
@@ -45,6 +51,13 @@ const MayaCurricularMaestria = props =>{
 
     const _inicializar = async() =>{
         try{
+            let {codigo_maestria, bandera_creacion_maestria} = location.state;
+            //llamada
+            if(bandera_creacion_maestria == null){
+                bandera_creacion_maestria= true;
+            }
+            setCreacionMaestriaFlg(bandera_creacion_maestria);
+
             setListaCiclos(lista_ciclos_json);
             setListaCiclosFiltro([
                 {
@@ -88,7 +101,8 @@ const MayaCurricularMaestria = props =>{
                     label:"Ciclo X"
                 }
             ])
-            setEnableEdit(false);
+            setEnableEdit(true);
+            setCreacionMaestriaFlg(bandera_creacion_maestria);
 
         }catch(e){
             console.log("Error: ",e)
@@ -121,6 +135,12 @@ const MayaCurricularMaestria = props =>{
         }
 
         setListaFiltradaCiclos(n_ciclos_filtrados);
+    }
+
+    const _finalizarCreacionMaestria=()=>{
+        history.push({
+            pathname: "/administracion_maestrias",
+          });
     }
     return(
         <Fragment>
@@ -215,6 +235,17 @@ const MayaCurricularMaestria = props =>{
                             </div>
                         </Col>
                     </Row>
+                    <br/>
+                        {creacionMaestriaflg === true?(
+                            <div style={{display:"flex", flexDirection:"row-reverse"}}>
+                            <Button className="btn" color="success" outline onClick={()=>_finalizarCreacionMaestria()}>
+                                Finalizar Creación de Maestria
+                            </Button>
+                        </div>
+                        ):(
+                            <div></div>
+                        )}
+                    <br/>
                     </CardBody>
                 </Card>
             </Container>

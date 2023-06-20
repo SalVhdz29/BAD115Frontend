@@ -169,5 +169,40 @@ export const lista_ciclos_json=[
                 metodologias:"expositiva, practica, etc"
             }
         ]
+    },
+    {
+        id_ciclo:4,
+        numero_ciclo:"IV",
+        lista_asignaturas:[]
+    },
+    {
+        id_ciclo:5,
+        numero_ciclo:"V",
+        lista_asignaturas:[]
+    },
+    {
+        id_ciclo:6,
+        numero_ciclo:"VI",
+        lista_asignaturas:[]
+    },
+    {
+        id_ciclo:7,
+        numero_ciclo:"VII",
+        lista_asignaturas:[]
+    },
+    {
+        id_ciclo:8,
+        numero_ciclo:"VIII",
+        lista_asignaturas:[]
+    },
+    {
+        id_ciclo:9,
+        numero_ciclo:"IX",
+        lista_asignaturas:[]
+    },
+    {
+        id_ciclo:10,
+        numero_ciclo:"X",
+        lista_asignaturas:[]
     }
 ]

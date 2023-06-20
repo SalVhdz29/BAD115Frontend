@@ -10,6 +10,7 @@ import {
     Card, CardBody, CardHeader
 } from 'reactstrap';
 import swal from 'sweetalert';
+import {useHistory, useLocation} from 'react-router-dom';
 //Component
 import DataTable from '../../DataTable/DataTable';
 //Json
@@ -20,6 +21,7 @@ const ModalVerAsignatura = ({modalOpen, recargarPadre, codigoAsignatura}) => {
     const [nombreAsignatura, setNombreAsignatura] = useState("");
     const [listaAreasConocimiento, setListaAreasConocimiento] = useState([]);
     const [listaPrerequisitos, setListaPrerequisitos] = useState([]);
+    const history = useHistory();
 
     useEffect(()=>{
         if(modalOpen != null && modalOpen != false){
@@ -74,6 +76,15 @@ const ModalVerAsignatura = ({modalOpen, recargarPadre, codigoAsignatura}) => {
         if(!modal == false && recargarPadre != null){
             recargarPadre();
         }
+    }
+
+    const _verProgramaAsignatura=()=>{
+        history.push({
+            pathname: "/programa_asignatura",
+            state:{
+                codigo_asignatura: codigoAsignatura,
+            }
+        });
     }
 
     return(
@@ -149,6 +160,10 @@ const ModalVerAsignatura = ({modalOpen, recargarPadre, codigoAsignatura}) => {
                                         </Col>
                                     </Row>
                                     {/* Poner boton que redirija a ver programa de asignatura, aqui ver dependencias y areas de conocimiento. */}
+                                    <Button className="btn btn-block" color="info" outline onClick={()=>_verProgramaAsignatura()}>
+                                        Programa de Asignatura
+                                    </Button>
+                                    <br />
                                 </div>
                             </CardBody>
                         </Card>

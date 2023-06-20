@@ -30,7 +30,8 @@ import {
   MdViewList,
   MdWeb,
   MdWidgets,
-  MdDateRange
+  MdDateRange,
+  MdSchool
 } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import {
@@ -102,7 +103,7 @@ const navItems = [
   { to: '/WidgetPage', name: 'widgets', exact: false, Icon: MdWidgets },
 ];
 
-const dashBoard={ to:'/', name:'BusquedaPacientes', exact:false, Icon:MdDashboard};
+const dashBoard={ to:'/administracion_maestrias', name:'Dashboard', exact:false, Icon:MdDashboard};
 
 const contents=[
   //Modulo Seguridad
@@ -180,7 +181,7 @@ const  Sidebar =props => {
             <SourceLink className="navbar-brand d-flex">
 
               <span className="text-white">
-                Gestion de Maestrias <FaTooth />
+                Gestion de <br/> Maestrias <MdSchool />
               </span>
             </SourceLink>
           </Navbar>

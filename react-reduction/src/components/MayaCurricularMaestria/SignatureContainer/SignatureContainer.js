@@ -10,6 +10,7 @@ import ModalVerAsignatura from '../ModalVerAsignatura/ModalVerAsignatura';
 import {FiEye, 
     FiTrash2,
     FiEdit3} from 'react-icons/fi';
+import swal from 'sweetalert';
 
 const datosAsignaturaModel={
     correlativo:"",
@@ -60,7 +61,12 @@ const SignatureContainer = ({correlativo, codigo_asignatura, nombre_asignatura, 
             //editar
 
         }else if(type == 3){
-
+            swal({
+                title:"Eliminar Asignatura",
+                icon:"warning",
+                text:"¿Desea eliminar la asignatura de la configuración de ciclo?",
+                buttons:["Cancelar","Aceptar"]
+            })
         }
     }
 
@@ -144,9 +150,8 @@ const SignatureContainer = ({correlativo, codigo_asignatura, nombre_asignatura, 
                         key={1}> <div style={{color:"green"}}><FiEye /></div> &nbsp;Detalle
                     </Item>
                     
-                    {enableEdit == false?(
+                    {/* {enableEdit == false?(
                         <Fragment>
-                            {/*Cambiar id_ciclo por el correlativo de asignatura_maestria_ciclo */}
                             <Item 
                                 onClick={(event)=>{_handleMenuOption(2)}} 
                                 key={2}><div style={{color:"orange"}}><FiEdit3 /></div> &nbsp;Editar
@@ -154,7 +159,7 @@ const SignatureContainer = ({correlativo, codigo_asignatura, nombre_asignatura, 
                         </Fragment>
                     ):(
                         <span></span>
-                    )}
+                    )} */}
                     {enableEdit == false?(
                         <Fragment>
                             {/*Cambiar id_ciclo por el correlativo de asignatura_maestria_ciclo */}
